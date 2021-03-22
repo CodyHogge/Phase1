@@ -32,6 +32,10 @@ public class MainController {
 	@Autowired RecipeRepository recipeRepository;
 	
 
+	@RequestMapping("/fresh")
+	public String fresh(Model model) {
+		return "fresh";
+	}
 		
 	@RequestMapping({"/","/home"})
 	public String home(Model model) {
