@@ -1,0 +1,8 @@
+@charset "ISO-8859-1";
+
+.custH1 {
+	color: rgb(170, 0, 190);
+	text-transform: capitalize;
+	background: black;
+}
+
