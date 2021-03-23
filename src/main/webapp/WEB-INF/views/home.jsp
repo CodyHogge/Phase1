@@ -36,10 +36,8 @@
 
 <!-- JS files -->
 <script type="text/javascript" src="/helloTest/resources/js/app.js"></script>
-<script type="text/javascript" src="/helloTest/resources/js/jsService/RecipeService.js"></script>
-<script type="text/javascript" src="/helloTest/resources/js/myHomeController.js"></script>
-<script type="text/javascript" src="/helloTest/resources/js/TestController.js"></script>
-<script type="text/javascript" src="/helloTest/resources/js/jsComponents/recipeBookComp.js"></script>
+<script type="text/javascript" src="/helloTest/resources/js/FreshControl.js"></script>
+<script type="text/javascript" src="/helloTest/resources/js/FreshService.js"></script>
 
 
 
@@ -48,7 +46,7 @@
 </head>
 
 <body>
-<div ng-app="myHome" ng-controller="MyHomeController as ctrl">
+<div ng-app="myHome" ng-controller="FreshControl as ctrl">
 
 
 	<jsp:include page="components/header.jsp"></jsp:include>
@@ -70,7 +68,7 @@
 				
 				
 				
-				<div class="btn-toolbar mb-2 mb-md-0">
+				<!-- <div class="btn-toolbar mb-2 mb-md-0">
 					<div class="btn-group me-2">
 						<button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
 						<button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
@@ -87,15 +85,10 @@
 							<line x1="3" y1="10" x2="21" y2="10"></line></svg>
 						This week
 					</button>
-				</div>
+				</div> -->
 			</div>
 
-<!-- 			<canvas class="mt-4"  -->
-<!-- 				width="843" height="356" -->
-<!-- 				style="display: block; height: 285px; width: 675px;"> -->
-<!-- 				</canvas> -->
-				
-			<p>_________________________________________________________________</p>
+			<%-- <div>
 			<p class="custH1">${msg }</p>
 			<ol>
 				<c:forEach var="recipe" items="${recipes }">
@@ -109,29 +102,24 @@
 				<br>
 				</c:forEach>
 			</ol>
+			</div> --%>
 			<p>_________________________________________________________________</p>
 			
-			<h1> TEST TEST TEST TEST
-{{ test }}
-</h1>
-
-<h3><strong> <span ng-bind="ctrl.scope.test"></span> </strong></h3>
+			<h1> JavaScript Recipe List </h1>
 			
 			<ul>
-				<li ng-repeat="testRec in ctrl.recipes">
-					<span ng-bind="testRec.name"></span><br>
-					<span ng-bind="testRec.description"></span>
+				<li ng-repeat="ex in list2">
+					<span ng-bind="ex.name"></span><br>
+					  -> <span ng-bind="ex.description"></span>
+					  <br>
 				</li>
 			</ul>
 			<br>
-			<p>Total number of recipes: {{ ctrl.recipes.length }}</p>
+			<p>Total number of recipes: {{ list2.length }}</p>
 			
 			<p> addition test 1 + 2 = {{ 1 +  2 }}</p>
 			
 			
-			
-			
-
 			<h2>Section title</h2>
 			<div class="table-responsive">
 				<table class="table table-striped table-sm">
@@ -157,6 +145,7 @@
 					</tbody>
 				</table>
 			</div>
+			
 		</main>
 	</div>
 </div>

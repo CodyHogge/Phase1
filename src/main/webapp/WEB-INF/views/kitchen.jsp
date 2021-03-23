@@ -5,7 +5,7 @@
 
 
 <!DOCTYPE html>
-<html ng-app="myHome">
+<html>
 <head>
 
 <!-- Bootstrap CDN -->
@@ -33,9 +33,10 @@
 <link rel="stylesheet" href='<c:url value="/resources/css/style.css"/>'>
 
 <!-- JS files -->
-<script type="text/javascript" src='<c:url value="/resources/js/app.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/js/myHomeController.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/js/jsComponents/recipeBookComp.js"/>'></script>
+<script type="text/javascript" src="/helloTest/resources/js/app.js"></script>
+<script type="text/javascript" src="/helloTest/resources/js/FreshControl.js"></script>
+<script type="text/javascript" src="/helloTest/resources/js/FreshService.js"></script>
+<script type="text/javascript" src="/helloTest/resources/js/jsComponents/recipeBookComp.js"></script>
 
 <!-- Bootstrap Icons -->
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -44,7 +45,7 @@
 <title>${ roomName }</title>
 </head>
 
-<body ng-controller="myHomeController">
+<body ng-app="myHome" ng-controller="FreshControl as ctrl">
 
 	<jsp:include page="components/header.jsp"></jsp:include>
 
@@ -96,7 +97,7 @@
 				</li>
 			</ul> -->
 			<br>
-			<p>Total number of recipes: {{ recipes.length }}</p>
+			<p>Total number of recipes: {{ list2.length }}</p>
 			
 			<p>----------------------------------------------------------------------------</p>
 			<div>

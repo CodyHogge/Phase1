@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,9 +40,17 @@ public class RecipeController {
 	@RequestMapping(value = "/RecipeController/AllRecList", method = RequestMethod.GET)
 	public ResponseEntity<List<Recipe>> AllRecList() {
 		List<Recipe> recipes = recipeRepository.findAll();
-		System.out.println("^^AllRecList function called^^");
+		
 		ResponseEntity<List<Recipe>> resp = new ResponseEntity<List<Recipe>>(recipes, HttpStatus.OK);
 		return resp;
+	}
+	
+	@RequestMapping(value = "/RecipeController/createRecipe", method = RequestMethod.POST)
+	public String createRecipe(@RequestBody Recipe recipe) {
+		System.out.println("^^RecipeController hit^^");
+		recipeRepository.addNewRecipe(recipe);
+		
+		return "Post Successfully";
 	}
 
 	

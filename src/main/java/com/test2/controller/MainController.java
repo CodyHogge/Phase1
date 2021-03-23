@@ -106,6 +106,8 @@ public class MainController {
 		return room.toLowerCase();
 	}
 	
+	
+	//Recipe Book Actions
 	@RequestMapping("/RecipeBook")
 	public String recipeBook(Model model) {
 		String room = "Kitchen";
@@ -145,14 +147,8 @@ public class MainController {
 		ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
 		RecipeService service = appContext.getBean("recipeService", RecipeService.class);
 		
-		System.out.println("**********************");
-		System.out.println("POST Mapping adding new recipe from form.");
-		System.out.println(recipe.getName());
-		System.out.println(recipe.getDescription());
-		System.out.println("**********************");
-		recipeRepository.addNewRecipe(recipe);
-		
-		
+
+		recipeRepository.addNewRecipe(recipe);		
 
 		model.addAttribute("recipes", recipeRepository.findAll());
 		ra.addFlashAttribute("msg", "Post mapping - /addRecipe");

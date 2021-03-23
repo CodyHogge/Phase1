@@ -1,24 +1,17 @@
-/**
- * 
- */
-
 (function(){
 	'use strict';
 	
 	angular.
 	module('myHome').
-	controller('MyHomeController', function MyHomeController(){
-
-	}).
 	component('recipeBookComp', {
 		selector: 'recipeBookComp',
 		template: 
 			'<ul>' +
-				'<li ng-repeat="recipe in recipes">' +
-					'<span>{{ recipe.name }}</span>' +
-					'<p>{{ recipe.description }}</p>' +
+				'<li ng-repeat="recipe in list2">' +
+					'<span ng-bind="recipe.name"></span>' +
+					'  -> <span ng-bind="recipe.description"></span> <br>' +
 				'</li>' +
 			'</ul>',
-		controller: 'MyHomeController'
+		controller: 'FreshControl'
 	});
-})();
+});

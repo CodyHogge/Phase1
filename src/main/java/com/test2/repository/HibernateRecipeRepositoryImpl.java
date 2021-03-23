@@ -37,12 +37,12 @@ public class HibernateRecipeRepositoryImpl implements RecipeRepository {
 	
 	@Override
 	public List<Recipe> findAll(){
-		System.out.println("^^findAll() -> HibRecRepImp called^^");
+		
 		List<Recipe> recipes = this.recipes;
-		System.out.println(recipes);
+
 		if(recipes == null) {
 			recipes = initStaticList();
-			System.out.println(recipes);
+			System.out.println("^^initStaticList() -> HibRecRepImp called^^");
 		}
 
 		this.recipes = recipes;
@@ -54,18 +54,9 @@ public class HibernateRecipeRepositoryImpl implements RecipeRepository {
 	public void addNewRecipe(Recipe recipe) {
 		// TODO Auto-generated method stub
 		System.out.println("^^addNewRecipe -> HibRecRepImp^^");		
-//		List<Recipe> recipes = this.recipes;
-//		System.out.println("^^this.recipes within addNewRecipe() -> HibRecRepImp^^");
-//		recipes.add(recipe);
-//		this.recipes = recipes;
 		recipe.setId(new Long(this.recipes.size()+1));
 		this.recipes.add(recipe);
-		
-		System.out.println("this.recipes after the add : ");
-		recipes.forEach(u->{
-			System.out.println(u.getName());
-		});
-		System.out.println("^^addNewRecipe() -> HibRecRepImp BREAK^^");
+		System.out.println("^^addNewRecipe() -> HibRecRepImp COMPLETE^^");
 	}
 
 	@Override

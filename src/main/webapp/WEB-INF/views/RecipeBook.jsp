@@ -5,7 +5,7 @@
 
 
 <!DOCTYPE html>
-<html ng-app="myHome">
+<html>
 <head>
 
 <!-- Bootstrap CDN -->
@@ -33,9 +33,10 @@
 <link rel="stylesheet" href='<c:url value="/resources/css/style.css"/>'>
 
 <!-- JS files -->
-<script type="text/javascript" src='<c:url value="/resources/js/app.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/js/myHomeController.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/js/jsComponents/recipeBookComp.js"/>'></script>
+<script type="text/javascript" src="/helloTest/resources/js/app.js"></script>
+<script type="text/javascript" src="/helloTest/resources/js/FreshControl.js"></script>
+<script type="text/javascript" src="/helloTest/resources/js/FreshService.js"></script>
+<script type="text/javascript" src="/helloTest/resources/js/jsComponents/recipeBookComp.js"></script>
 
 <!-- Bootstrap Icons -->
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -44,7 +45,7 @@
 <title>${ roomName }</title>
 </head>
 
-<body ng-controller="myHomeController">
+<body ng-app="myHome" ng-controller="FreshControl as ctrl">
 
 
 	<jsp:include page="components/header.jsp"></jsp:include>
@@ -86,85 +87,55 @@
 
 			<!-- Page Information goes here -->
 			<div class="row">
-				<div class="container">
 			
-			<div ng-component>
-			<recipe-book-comp></recipe-book-comp>
-			
-			</div>
 			<p>----------------------------------------------------------------------------</p>
   
-			<p>Total number of recipes: {{ recipes.length }}</p>
+			<p>Total number of recipes: {{ list2.length }}</p>
 			
 			<p>----------------------------------------------------------------------------</p>
+			
+				<div class="container">
 
 					<div class="row row-cols-3 row-cols-md-3 g-4">
-						<c:forEach var="recipe" items="${recipes}">
-							<div class="col">
-
-								<div class="card">
-									<!-- 								<img src="..." class="card-img-top" alt="..."> -->
-									<div class="card-body">
-										<h5 class="card-title">${recipe.name }</h5>
-										<p class="card-text">${recipe.description }</p>
-										<br>
-<!-- 										<button type="button" class="btn btn-primary btn-sm open-AddBookDialog" -->
-<!-- 											data-bs-toggle="modal" data-bs-target="#editModal"> -->
-<!-- 											Edit Recipe</button>  -   -->
-<!-- 											<button type="button" class="btn btn-danger btn-sm" -->
-<!-- 											data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="confirmed(); return false;"> -->
-<!-- 											Delete Recipe</button>  -->
-											
-									</div>
+						<div class="col" ng-repeat="recipe in list2">
+							<div class="card">
+								<!-- 								<img src="..." class="card-img-top" alt="..."> -->
+								<div class="card-body">
+									<h5 class="card-title">
+										<span ng-bind="recipe.name"></span>
+									</h5>
+									<p class="card-text">
+										<span ng-bind="recipe.description"></span>
+									</p>
+									<br>
+									<!-- 	<button type="button" class="btn btn-primary btn-sm open-AddBookDialog" -->
+									<!-- 	data-bs-toggle="modal" data-bs-target="#editModal"> -->
+									<!-- 	Edit Recipe</button>  -   -->
+									<!-- 	<button type="button" class="btn btn-danger btn-sm" -->
+									<!-- 	data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="confirmed(); return false;"> -->
+									<!-- 	Delete Recipe</button>  -->
 								</div>
-
 							</div>
-						</c:forEach>
+						</div>
 					</div>
 
-					<p>----------------------------------------------------------------------------</p>
-			
-			<div class="generic-container" ng-controller="myHomeController as ctrl">
-				<div class="panel panel-default">
-					<div class="formcontainer">
-						<form ng-submit="ctrl.submit()" name="myForm">
-						<div class="row">
-                          <div class="form-group col-md-12">
-                              <label class="col-md-2 control-lable" for="name">Recipe Name</label>
-                              <div class="col-md-7">
-                                  <input type="text" ng-model="ctrl.recipe.name" id="name" class="form-control input-sm" placeholder="Enter the name"/>
-                              </div>
-                          </div>
-                      </div>
- 
-                      <div class="row">
-                          <div class="form-group col-md-12">
-                              <label class="col-md-2 control-lable" for="description">Description</label>
-                              <div class="col-md-7">
-                                  <input type="text" ng-model="ctrl.recipe.description" id="description" class="email form-control input-sm" placeholder="Enter a Description" required/>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="form-actions floatRight">
-                              <button onclick="createRecipe()">Add Recipe</button>
-                       </div>
-                      </form>
-					</div>
 				</div>
-			</div>
+				
+			<p>----------------------------------------------------------------------------</p>
 			
-			
-<!-- 			<div> -->
-<!-- 				<span><strong>addRecipeJS()</strong></span><br> -->
-<!-- 				<label for="name">Recipe Name</label> -->
-<!-- 				<input type="text" name="name" data-ng-model="newrecipe.name" placeholder="Recipe Name" required="required" /> -->
-<!-- 				<label for="description">Description</label> -->
-<!-- 				<input type="text" name="description" data-ng-model="newrecipe.description" placeholder="Description" /> -->
-<!-- 				<input type="submit" data-ng-click="createRecipe()" class="btn btn-primary" /> -->
-<!-- 			</div>			 -->
-		</div>
+			<form name="createRecipe" ng-submit="createRecipe()">
+				<div class="form-group">
+					<label for="name">Name: </label>
+					<input type="text" class="form-control" id="name" placeholder="Enter Name" ng-model="XXXX.name"/>
+				</div>
+				<div class="form-group">
+					<label for="description">Description: </label>
+					<input type="text" class="form-control" id="description" placeholder="Enter description" ng-model="XXXX.description"/>
+				</div>
+				<button type="submit" class="btn btn-default">Create Recipe</button>
+			</form>		
 
-</div>
+			</div>
 			<!-- END -->
 
 		</main>

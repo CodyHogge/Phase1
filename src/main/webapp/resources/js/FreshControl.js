@@ -1,20 +1,37 @@
 angular.module('myHome').controller('FreshControl', ['$scope','FreshService', function($scope, FreshService) {
 	$scope.test = 'Test string from $scope';
+	$scope.formRec;
+	
+
 	
 	$scope.list = [
 		{
 			name: 'test1',
-			desc: 'test1 desc'
+			description: 'test1 desc'
 		},
 		{
 			name: 'test2',
-			desc: 'test2 desc'
+			description: 'test2 desc'
 		},
 		{
 			name: 'test3',
-			desc: 'test3 desc'
+			description: 'test3 desc'
 		}
 	]
 	
-	$scope.list2 = FreshService.getList();
+	function createRecipe(){
+		$scope.list2 = FreshService.createRecipe($scope.formRec).then(function(data) {
+			$scope.list2 = data;
+			return $scope.list2;
+		});
+	}
+	
+	$scope.list2 = [];
+	$scope.list2 = FreshService.getList().then(function(data) {
+		$scope.list2 = data;
+		return $scope.list2;
+	});
+	
+	
+	
 }]);
