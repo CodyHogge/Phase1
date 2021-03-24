@@ -23,23 +23,32 @@ angular.module('myHome').controller('FreshControl', ['$scope','FreshService', fu
 			description: 'test3 desc'
 		}
 	];
-	
-	
 	$scope.list2 = [];
-	$scope.list2 = FreshService.getList().then(function(data) {
-		$scope.list2 = data;
-		return $scope.list2;
-	});
-
 	
-	$scope.createRecipe = function createRecipe(form){
-		console.log("createRecipe() in the Fresh Control");
-		FreshService.createRecipe(form);
-		$scope.list2 = FreshService.getList().then(function(data) {
+	$scope.listComp = function listComp(){
+		console.log("listComp called in FreshControl");
+		FreshService.getList().then(function(data) {
 			$scope.list2 = data;
 			return $scope.list2;
 		});
 		};
+	
+	$scope.createRecipe = function createRecipe(form){
+		console.log("createRecipe() in the Fresh Control");
+		FreshService.createRecipe(form);
+		$scope.list2 = $scope.listComp();
+		};
+		
+	$scope.list2 = $scope.listComp();
+	
+	/*$scope.list2 = FreshService.getList().then(function(data) {
+		$scope.list2 = data;
+		return $scope.list2;
+	});*/
+
+	
+	
+	
 	
 	
 		
