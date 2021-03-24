@@ -1,3 +1,5 @@
+(function() { 
+
 angular.module('myHome').
 	factory('FreshService', FreshService);
 	FreshService.$inject = ['$http', '$q'];
@@ -32,19 +34,27 @@ angular.module('myHome').
 		}
 		
 		function createRecipe(createObj){
-			var recipeDetail = {
-				name: name,
-				description: description
-			};
-			
-			$http.post(urlBase+'createRecipe', data).then(
-				function(response) {
-					return response.statusText;
-				},
-				function(errResponse) {
-					return errResponse.statusText;
+			console.log('createRecipe in the Fresh Service', createObj);
+			$http({
+				method : "POST",
+				url : urlBase+"createRecipe",
+				data : angular.toJson(createObj),
+				headers : {
+					'Content-Type' : 'application/json'
 				}
-			);
+			}).then(function(response) {
+				console.log('Response from createRecipe', response);
+				deferred.resolve(response);				
+			},
+			function(errResponse){
+				console.log("ERROR");
+				deferred.reject(errResponse);
+			});
+			
+			return deferred.promise;
 		}
 		
+		
 	}
+	
+})();

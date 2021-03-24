@@ -34,9 +34,9 @@
 
 <!-- JS files -->
 <script type="text/javascript" src="/helloTest/resources/js/app.js"></script>
-<script type="text/javascript" src="/helloTest/resources/js/FreshControl.js"></script>
 <script type="text/javascript" src="/helloTest/resources/js/FreshService.js"></script>
-<script type="text/javascript" src="/helloTest/resources/js/jsComponents/recipeBookComp.js"></script>
+<script type="text/javascript" src="/helloTest/resources/js/FreshControl.js"></script>
+
 
 <!-- Bootstrap Icons -->
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -85,9 +85,7 @@
 
 
 			<!-- Page Information goes here -->
-			<div ng-component>
-			<recipe-book-comp></recipe-book-comp>
-			</div>
+
 			<p>----------------------------------------------------------------------------</p>
 			
 			 <!-- <ul>

@@ -20,8 +20,9 @@ public class RecipeServiceImpl implements RecipeService {
 	
 	@Override
 	public void addNewRecipe(Recipe recipe){
+		System.out.println("^^RecipeServiceImpl - addNewRecipe start^^");
 		this.recipeRepository.addNewRecipe(recipe);
-		System.out.println("^^RecipeServiceImpl^^");
+		System.out.println("^^RecipeServiceImpl - addNewRecipe success^^");
 	}
 
 	public RecipeRepository getRecipeRepository() {

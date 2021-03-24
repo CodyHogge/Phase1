@@ -1,8 +1,13 @@
+//put IIFE for john papa
+(function() { 
+'use strict';
+
 angular.module('myHome').controller('FreshControl', ['$scope','FreshService', function($scope, FreshService) {
 	$scope.test = 'Test string from $scope';
-	$scope.formRec;
-	
 
+	$scope.form = {
+		createRecipeForm: {}
+	};
 	
 	$scope.list = [
 		{
@@ -17,21 +22,32 @@ angular.module('myHome').controller('FreshControl', ['$scope','FreshService', fu
 			name: 'test3',
 			description: 'test3 desc'
 		}
-	]
+	];
 	
-	function createRecipe(){
-		$scope.list2 = FreshService.createRecipe($scope.formRec).then(function(data) {
-			$scope.list2 = data;
-			return $scope.list2;
-		});
-	}
 	
 	$scope.list2 = [];
 	$scope.list2 = FreshService.getList().then(function(data) {
 		$scope.list2 = data;
 		return $scope.list2;
 	});
+
+	
+	$scope.createRecipe = function createRecipe(form){
+		console.log("createRecipe() in the Fresh Control");
+		FreshService.createRecipe(form);
+		$scope.list2 = FreshService.getList().then(function(data) {
+			$scope.list2 = data;
+			return $scope.list2;
+		});
+		};
 	
 	
-	
+		
+	$scope.submit = function submit() {
+		console.log("Submit() from the freshcntrl");
+
+		};
+		
 }]);
+
+})();

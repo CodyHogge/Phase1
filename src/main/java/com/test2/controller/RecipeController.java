@@ -11,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,12 +46,13 @@ public class RecipeController {
 		return resp;
 	}
 	
-	@RequestMapping(value = "/RecipeController/createRecipe", method = RequestMethod.POST)
-	public String createRecipe(@RequestBody Recipe recipe) {
-		System.out.println("^^RecipeController hit^^");
+	@RequestMapping(value = "/RecipeController/createRecipe", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+	public ResponseEntity<String> createRecipe(@RequestBody Recipe recipe) {
+		System.out.println("^^RecipeController hit - createRecipe^^"); 
+
 		recipeRepository.addNewRecipe(recipe);
 		
-		return "Post Successfully";
+		return new ResponseEntity<String>(HttpStatus.CREATED);
 	}
 
 	

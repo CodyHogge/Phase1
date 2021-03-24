@@ -54,7 +54,7 @@ public class HibernateRecipeRepositoryImpl implements RecipeRepository {
 	public void addNewRecipe(Recipe recipe) {
 		// TODO Auto-generated method stub
 		System.out.println("^^addNewRecipe -> HibRecRepImp^^");		
-		recipe.setId(new Long(this.recipes.size()+1));
+		recipe.setId(new Long(this.recipes.size()+2));
 		this.recipes.add(recipe);
 		System.out.println("^^addNewRecipe() -> HibRecRepImp COMPLETE^^");
 	}

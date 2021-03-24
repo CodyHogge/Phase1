@@ -34,8 +34,8 @@
 
 <!-- JS files -->
 <script type="text/javascript" src="/helloTest/resources/js/app.js"></script>
-<script type="text/javascript" src="/helloTest/resources/js/FreshControl.js"></script>
 <script type="text/javascript" src="/helloTest/resources/js/FreshService.js"></script>
+<script type="text/javascript" src="/helloTest/resources/js/FreshControl.js"></script>
 <script type="text/javascript" src="/helloTest/resources/js/jsComponents/recipeBookComp.js"></script>
 
 <!-- Bootstrap Icons -->
@@ -45,7 +45,8 @@
 <title>${ roomName }</title>
 </head>
 
-<body ng-app="myHome" ng-controller="FreshControl as ctrl">
+<body ng-app="myHome">
+<div ng-controller="FreshControl as ctrl">
 
 
 	<jsp:include page="components/header.jsp"></jsp:include>
@@ -123,23 +124,27 @@
 				
 			<p>----------------------------------------------------------------------------</p>
 			
-			<form name="createRecipe" ng-submit="createRecipe()">
+			
+			
+			<form name="form.createRecipeForm" ng-submit="createRecipe(form.createRecipeForm)">
 				<div class="form-group">
 					<label for="name">Name: </label>
-					<input type="text" class="form-control" id="name" placeholder="Enter Name" ng-model="XXXX.name"/>
+					<input type="text" class="form-control" id="name" placeholder="Enter Name" ng-model="form.createRecipeForm.name"/>
 				</div>
 				<div class="form-group">
 					<label for="description">Description: </label>
-					<input type="text" class="form-control" id="description" placeholder="Enter description" ng-model="XXXX.description"/>
+					<input type="text" class="form-control" id="description" placeholder="Enter description" ng-model="form.createRecipeForm.description"/>
 				</div>
-				<button type="submit" class="btn btn-default">Create Recipe</button>
-			</form>		
+				<input type="submit" class="btn btn-default" value="Submit"/>
+			</form>	
+			
+
 
 			</div>
 			<!-- END -->
 
 		</main>
 	</div>
-
+</div> <!-- ng-controller /div close -->
 </body>
 </html>
