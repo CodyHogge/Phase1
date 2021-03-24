@@ -37,9 +37,15 @@ angular.module('myHome').controller('FreshControl', ['$scope','FreshService', fu
 		console.log("createRecipe() in the Fresh Control");
 		FreshService.createRecipe(form);
 		$scope.list2 = $scope.listComp();
+		return $scope.list2;
 		};
 		
 	$scope.list2 = $scope.listComp();
+	
+	/*This is getting the updated list after the createRecipe(), but the data on the JSP is not refreshing
+	unless I reload the page. Need to see about maybe wrapping a div to reload whenever angular controller is called
+	or someway to reload just a "canvas"?*/
+	
 	
 	/*$scope.list2 = FreshService.getList().then(function(data) {
 		$scope.list2 = data;
