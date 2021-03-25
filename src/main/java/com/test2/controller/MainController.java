@@ -31,7 +31,7 @@ public class MainController {
 	
 	@Autowired RecipeRepository recipeRepository;
 	
-
+	//USED TO TEST FreshControl.js
 	@RequestMapping("/fresh")
 	public String fresh(Model model) {
 		return "fresh";
@@ -50,51 +50,14 @@ public class MainController {
 	}
 	
 	
-	
-	@GetMapping("/addRec")
-	public String addRec(Model model) {
-		model.addAttribute("msg", "Get map add");
-		model.addAttribute("recipe", new Recipe());
-		
-		return "addRecipe";
-	}
-	
-	@PostMapping("/addRec")
-	public String addRec(@ModelAttribute("recipe")Recipe recipe, Model model, RedirectAttributes ra) {
-		
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
-		RecipeService service = appContext.getBean("recipeService", RecipeService.class);
-		
-		
-		return "/home";
-	}
-		
-	
-	@RequestMapping("/add")
-	public String add(Model model, RedirectAttributes red, @RequestParam(name = "v1")Integer v1,
-			@RequestParam(name = "v2")Integer v2, @RequestParam(name = "v3", required = false, defaultValue = "0")Integer v3) {
-		
-		System.out.println("************** HIT THE ADD CONTROLLER******************");
-		System.out.println(v1 + " - " + v2 + " - " + v3);
-		
-		Integer sum = v1 + v2;
-		if(v3 != null) {
-			sum = sum + v3;
-		}
-		
-		model.addAttribute("msg1", sum);
-		
-		return "index";
-	}
+			
 	
 	
 	
 	
 	
+	//ROOM: KITCHEN MAPPING BEGIN
 	
-	//App development final
-	
-	//ROOM: KITCHEN 
 	@RequestMapping("/kitchen")
 	public String kitchen(Model model) {
 		String room = "Kitchen";
@@ -126,6 +89,7 @@ public class MainController {
 		return "redirect:/RecipeBook";
 	}
 	
+	//SYNC FORM ADDITION BEGIN
 	@GetMapping("/addRecipe")
 	public String addRecipe(Model model) {
 		model.addAttribute("msg", "Get mapping - /addRecipe");
@@ -156,6 +120,9 @@ public class MainController {
 		
 		return "redirect:/home";
 	}
+	//SYNC FORM ADDITION END
+	
+	//ROOM: KITCHEN MAPPING END
 	
 	
 	

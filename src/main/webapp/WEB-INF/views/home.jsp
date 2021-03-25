@@ -20,9 +20,13 @@
 	integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
 	crossorigin="anonymous" type="text/javascript"></script>
 <!-- CSS -->
-<link rel="stylesheet" href='<c:url value="/resources/css/style.css"/>'>
+<link 
+	rel="stylesheet" 
+	href='<c:url value="/resources/css/style.css"/>'>
 <!-- Bootstrap Icons -->
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<link 
+	rel="stylesheet" 
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 
 
@@ -30,29 +34,40 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"
 	type="text/javascript"></script>
-	
-<!-- 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"
-	type="text/javascript"></script> -->
+
 
 <!-- JS files -->
-<script type="text/javascript" src="/helloTest/resources/js/app.js"></script>
-<script type="text/javascript" src="/helloTest/resources/js/FreshControl.js"></script>
-<script type="text/javascript" src="/helloTest/resources/js/FreshService.js"></script>
-
+<script 
+	type="text/javascript" 
+	src="/helloTest/resources/js/app.js"></script>
+<script 
+	type="text/javascript" 
+	src="/helloTest/resources/js/FreshControl.js"></script>
+<script 
+	type="text/javascript" 
+	src="/helloTest/resources/js/FreshService.js"></script>
 
 
 <meta charset="ISO-8859-1">
+
 <title>myHome Landing</title>
+
 </head>
 
 <body>
-<div ng-app="myHome" ng-controller="FreshControl as ctrl">
 
+<div ng-app="myHome" ng-controller="FreshControl as ctrl"> <!-- NGAPP DIV WRAPPER BEGIN -->
 
+	<!-- HEADER COMPONENT -->
 	<jsp:include page="components/header.jsp"></jsp:include>
+	
 
-	<div class="row">
+	<div class="row"> <!-- CONTENT ROW = SIDEBAR + INFO BEGIN -->
+	
+		<!-- SIDEBAR COMPONENT -->
 		<jsp:include page="components/sidebar.jsp" />
+		
+		
 		<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 			<div class="chartjs-size-monitor">
 				<div class="chartjs-size-monitor-expand">
@@ -67,7 +82,7 @@
 				<h1 class="custH1">${home}	</h1>
 				
 				
-				
+				<!-- Bootstrapping additional options to be employed later -->
 				<!-- <div class="btn-toolbar mb-2 mb-md-0">
 					<div class="btn-group me-2">
 						<button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -86,23 +101,9 @@
 						This week
 					</button>
 				</div> -->
+				
 			</div>
 
-			<%-- <div>
-			<p class="custH1">${msg }</p>
-			<ol>
-				<c:forEach var="recipe" items="${recipes }">
-				<li>
-					<ul>
-						<li>Recipe Name = ${recipe.name}</li>
-						<li>Recipe Desc = ${recipe.description}</li>
-						<li>Recipe Id = ${recipe.id}</li>
-					</ul>
-				</li>
-				<br>
-				</c:forEach>
-			</ol>
-			</div> --%>
 			<p>_________________________________________________________________</p>
 			
 			<h1> JavaScript Recipe List </h1>
@@ -112,13 +113,15 @@
 					<span ng-bind="ex.name"></span><br>
 					  -> <span ng-bind="ex.description"></span>
 					  <br>
+					  -> <span ng-bind="ex.id"></span>
 				</li>
 			</ul>
 			<br>
 			<p>Total number of recipes: {{ list2.length }}</p>
 			
-			<p> addition test 1 + 2 = {{ 1 +  2 }}</p>
+			<p> JS addition test 1 + 2 = {{ 1 +  2 }}</p>
 			
+			<p>_________________________________________________________________</p>
 			
 			<h2>Section title</h2>
 			<div class="table-responsive">
@@ -147,7 +150,9 @@
 			</div>
 			
 		</main>
-	</div>
-</div>
+		
+	</div> <!-- CONTENT ROW = SIDEBAR + INFO CLOSE -->
+	
+</div> <!-- NGAPP DIV WRAPPER CLOSE -->
 </body>
 </html>

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,20 +25,13 @@ import com.test2.model.Recipe;
 import com.test2.repository.RecipeRepository;
 
 @RestController
+@EnableAsync
 public class RecipeController {
 	
 	@Autowired
 	RecipeRepository recipeRepository;
 	
-	@RequestMapping("/RecipeController/AllRecipeList")
-	public String AllRecipeList(Model model) {
-		System.out.println("^^RecipeController/AllRecipeList^^");
-		List<Recipe> recipes = recipeRepository.findAll();
-		
-		model.addAttribute("recipes", recipes);
-		return "RecipeBook";
-	}
-	
+	//GET METHOD FOR FreshService.js LIST	
 	@RequestMapping(value = "/RecipeController/AllRecList", method = RequestMethod.GET)
 	public ResponseEntity<List<Recipe>> AllRecList() {
 		List<Recipe> recipes = recipeRepository.findAll();
@@ -46,6 +40,7 @@ public class RecipeController {
 		return resp;
 	}
 	
+	//POST METHOD FOR FreshService.js ADD
 	@RequestMapping(value = "/RecipeController/createRecipe", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
 	public ResponseEntity<String> createRecipe(@RequestBody Recipe recipe) {
 		System.out.println("^^RecipeController hit - createRecipe^^"); 
