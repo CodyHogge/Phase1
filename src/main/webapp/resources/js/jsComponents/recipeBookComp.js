@@ -1,3 +1,5 @@
+//This component is currently unused in the program. 
+
 (function(){
 	'use strict';
 	

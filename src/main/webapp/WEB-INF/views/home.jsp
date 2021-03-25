@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
@@ -50,7 +50,10 @@
 
 <meta charset="ISO-8859-1">
 
-<title>myHome Landing</title>
+<title>
+	<c:if test="${content eq null}">${roomName}</c:if>
+	<c:if test="${content ne null}">${content}</c:if>
+</title>
 
 </head>
 
@@ -110,10 +113,10 @@
 			
 			<ul>
 				<li ng-repeat="ex in list2">
-					<span ng-bind="ex.name"></span><br>
-					  -> <span ng-bind="ex.description"></span>
+					<strong><span ng-bind="ex.name"></span></strong><br>
+					  -> Description: <span ng-bind="ex.description"></span>
 					  <br>
-					  -> <span ng-bind="ex.id"></span>
+					  -> Id: <span ng-bind="ex.id"></span>
 				</li>
 			</ul>
 			<br>

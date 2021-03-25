@@ -34,6 +34,8 @@ public class MainController {
 	//USED TO TEST FreshControl.js
 	@RequestMapping("/fresh")
 	public String fresh(Model model) {
+		String content = "FreshControl test";
+		model.addAttribute("content", content);
 		return "fresh";
 	}
 		
@@ -43,7 +45,9 @@ public class MainController {
 		ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
 		RecipeService service = appContext.getBean("recipeService", RecipeService.class);
 		
+		String content = "myHome Landing";
 		
+		model.addAttribute("content", content);
 		model.addAttribute("recipes", recipeRepository.findAll());
 		
 		return "home";
@@ -61,8 +65,10 @@ public class MainController {
 	@RequestMapping("/kitchen")
 	public String kitchen(Model model) {
 		String room = "Kitchen";
+		String content = null;
 		String[] roomTasks = {"Meal Planner", "Recipe Book", "Pantry List", "Grocery List", "Placeholder 2"};		
 		model.addAttribute("roomName", room);
+		model.addAttribute("content", content);
 		model.addAttribute("roomTasks", roomTasks);
 		
 		
@@ -74,8 +80,10 @@ public class MainController {
 	@RequestMapping("/RecipeBook")
 	public String recipeBook(Model model) {
 		String room = "Kitchen";
+		String content = "Recipe Book";
 		String[] roomTasks = {"Meal Planner", "Recipe Book", "Pantry List", "Grocery List", "Placeholder 2"};		
 		model.addAttribute("roomName", room);
+		model.addAttribute("content", content);
 		model.addAttribute("roomTasks", roomTasks);		
 		
 		model.addAttribute("recipes", recipeRepository.findAll());
@@ -92,14 +100,11 @@ public class MainController {
 	//SYNC FORM ADDITION BEGIN
 	@GetMapping("/addRecipe")
 	public String addRecipe(Model model) {
+		String content = "Sync Form";
 		model.addAttribute("msg", "Get mapping - /addRecipe");
-		
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
-		RecipeService service = appContext.getBean("recipeService", RecipeService.class);
-		
-
+				
+		model.addAttribute("content", content);
 		model.addAttribute("recipes", recipeRepository.findAll());
-
 		model.addAttribute("recipe", new Recipe());
 		
 		return "addRecipe";
@@ -107,13 +112,12 @@ public class MainController {
 	
 	@PostMapping("/addRecipe")
 	public String addRecipe(@ModelAttribute("recipe") Recipe recipe, Model model, RedirectAttributes ra) {
-		
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
-		RecipeService service = appContext.getBean("recipeService", RecipeService.class);
+		String content = "Sync Form";
+
 		
 
 		recipeRepository.addNewRecipe(recipe);		
-
+		model.addAttribute("content", content);
 		model.addAttribute("recipes", recipeRepository.findAll());
 		ra.addFlashAttribute("msg", "Post mapping - /addRecipe");
 				
@@ -123,7 +127,6 @@ public class MainController {
 	//SYNC FORM ADDITION END
 	
 	//ROOM: KITCHEN MAPPING END
-	
 	
 	
 

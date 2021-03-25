@@ -2,6 +2,55 @@
 (function() { 
 'use strict';
 
+angular
+	.module('myHome')
+	.controller('FreshControl', FreshControl);
+	FreshControl.$inject = ['FreshService']
+	
+	function FreshControl(FreshService){
+		
+		this.test = 'Test string from this.test';
+		
+		this.form = {
+			createRecipeForm: {}
+		};
+		
+		this.list = [
+				{
+					name: 'test1',
+					description: 'test1 desc'
+				},
+				{
+					name: 'test2',
+					description: 'test2 desc'
+				},
+				{
+					name: 'test3',
+					description: 'test3 desc'
+				}
+			];
+			
+		this.list2 = [];
+		
+		this.listComp = function listComp(){
+			console.log("listComp called in FreshControl");
+			FreshService.getList().then(function(data){
+				this.list2 = data;
+				return this.list2;
+			});
+		};
+		
+		this.createRecipe = function createRecipe(form){
+			console.log("createRecipe() in FreshControl");
+			FreshService.createRecipe(form);
+			this.list2 = this.listComp();
+			return this.list2;
+		};
+		
+		this.list2 = this.listComp();
+	}
+
+/* THIS WAS THE ORIGINAL CODE THAT I USED TO GET THE PROJECT RUNNING, BEFORE CONVERTING FORMAT TO JOHN PAPA ->
 angular.module('myHome').controller('FreshControl', ['$scope','FreshService', function($scope, FreshService) {
 	$scope.test = 'Test string from $scope';
 
@@ -40,7 +89,7 @@ angular.module('myHome').controller('FreshControl', ['$scope','FreshService', fu
 		return $scope.list2;
 		};
 		
-	$scope.list2 = $scope.listComp();
+	$scope.list2 = $scope.listComp();*/
 	
 	/*This is getting the updated list after the createRecipe(), but the data on the JSP is not refreshing
 	unless I reload the page. Need to see about maybe wrapping a div to reload whenever angular controller is called
@@ -53,16 +102,12 @@ angular.module('myHome').controller('FreshControl', ['$scope','FreshService', fu
 	});*/
 
 	
-	
-	
-	
-	
-		
-	$scope.submit = function submit() {
+	/*$scope.submit = function submit() {
 		console.log("Submit() from the freshcntrl");
 
 		};
+	
+}]);*/
+	
 		
-}]);
-
-})();
+})();	//Close the IIFE

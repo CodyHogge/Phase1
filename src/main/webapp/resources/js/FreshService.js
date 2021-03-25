@@ -52,8 +52,7 @@ angular.module('myHome').
 			});
 			
 			return deferred.promise;
-		}
-		
+		}		
 		
 	}
 	

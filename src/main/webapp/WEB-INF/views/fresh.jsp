@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
@@ -20,9 +20,13 @@
 	integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
 	crossorigin="anonymous" type="text/javascript"></script>
 <!-- CSS -->
-<link rel="stylesheet" href='<c:url value="/resources/css/style.css"/>'>
+<link 
+	rel="stylesheet" 
+	href='<c:url value="/resources/css/style.css"/>'>
 <!-- Bootstrap Icons -->
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<link 
+	rel="stylesheet" 
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 
 
@@ -30,21 +34,33 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"
 	type="text/javascript"></script>
-	
-<!-- 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"
-	type="text/javascript"></script> -->
+
 
 <!-- JS files -->
-<script type="text/javascript" src="/helloTest/resources/js/app.js"></script>
-<script type="text/javascript" src="/helloTest/resources/js/FreshControl.js"></script>
-<script type="text/javascript" src="/helloTest/resources/js/FreshService.js"></script>
-
+<script 
+	type="text/javascript" 
+	src="/helloTest/resources/js/app.js"></script>
+<script 
+	type="text/javascript" 
+	src="/helloTest/resources/js/FreshControl.js"></script>
+<script 
+	type="text/javascript" 
+	src="/helloTest/resources/js/FreshService.js"></script>
 
 
 <meta charset="ISO-8859-1">
-<title>myHome Landing</title>
+
+<title>
+	<c:if test="${content eq null}">${roomName}</c:if>
+	<c:if test="${content ne null}">${content}</c:if>
+</title>
+
 </head>
 <body>
+
+<!-- THIS JSP IS USED TO TEST THE FUNCTIONALITY OF THE THE FRESHCONTROL.JS -->
+
+
 	<div ng-app="myHome" ng-controller="FreshControl as ctrl">
 	
 		<h3>vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv</h3>
