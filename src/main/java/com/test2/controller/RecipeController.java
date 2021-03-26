@@ -42,12 +42,16 @@ public class RecipeController {
 	
 	//POST METHOD FOR FreshService.js ADD
 	@RequestMapping(value = "/RecipeController/createRecipe", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-	public ResponseEntity<String> createRecipe(@RequestBody Recipe recipe) {
+	public ResponseEntity<List<Recipe>> createRecipe(@RequestBody Recipe recipe) {
 		System.out.println("^^RecipeController hit - createRecipe^^"); 
 
 		recipeRepository.addNewRecipe(recipe);
 		
-		return new ResponseEntity<String>(HttpStatus.CREATED);
+		List<Recipe> recipes = recipeRepository.findAll();
+		
+		ResponseEntity<List<Recipe>> resp = new ResponseEntity<List<Recipe>>(recipes, HttpStatus.CREATED);
+		
+		return resp;
 	}
 
 	

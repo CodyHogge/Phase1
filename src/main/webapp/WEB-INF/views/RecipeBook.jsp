@@ -157,7 +157,7 @@
 								placeholder="Enter description"
 								ng-model="form.createRecipeForm.description" />
 						</div>
-						<input type="submit" class="btn btn-default" value="Submit" />
+						<input type="submit" class="btn btn-default" value="Submit" ng-click="cGetList()"/>
 					</form>
 
 

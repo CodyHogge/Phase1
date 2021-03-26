@@ -112,11 +112,11 @@
 			<h1> JavaScript Recipe List </h1>
 			
 			<ul>
-				<li ng-repeat="ex in ctrl.list2">
-					<strong><span ng-bind="ex.name"></span></strong><br>
-					  -> Description: <span ng-bind="ex.description"></span>
+				<li ng-repeat="recipe in ctrl.list2">
+					<strong><span ng-bind="recipe.name"></span></strong><br>
+					  -> Description: <span ng-bind="recipe.description"></span>
 					  <br>
-					  -> Id: <span ng-bind="ex.id"></span>
+					  -> Id: <span ng-bind="recipe.id"></span>
 				</li>
 			</ul>
 			<br>

@@ -12,6 +12,7 @@ angular
 		vm.test = 'Test string from this.test';
 		
 		vm.form = {
+			
 			createRecipeForm: {}
 		};
 					
@@ -29,12 +30,24 @@ angular
 		
 		vm.createRecipe = function createRecipe(form){
 			console.log("createRecipe() in FreshControl");
-			FreshService.createRecipe(form);
-			vm.list2 = vm.cGetList();
+			FreshService.createRecipe(form)
+			.then(function(data){
+				
+				//This function is completing before the Response in FreshService can set the
+				//new recipe is added.
+				
+				console.log('createRec -> FreshControl -> data :'+data);
+				
+				vm.list2 = data;			
+				
+				console.log('Recipes data returned from createRecipe Service ***');
+			});
 			return vm.list2;
 		};
 		
 		vm.cGetList();
+		
+		
 	}
 	
 })(); //Close the John Papa IIFE

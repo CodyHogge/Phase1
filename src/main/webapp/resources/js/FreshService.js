@@ -23,6 +23,8 @@ angular.module('myHome').
 				function(response) {
 					deferred.resolve(response.data);
 					console.log('FreshService getting list' , response.data);
+					return response.data;
+// code review suggest, working with http mod->	return response.data;
 				},
 				function(errResponse) {
 					console.error('Error fetching list');
@@ -43,12 +45,11 @@ angular.module('myHome').
 					'Content-Type' : 'application/json'
 				}
 			}).then(function(response) {
-				console.log('Response from createRecipe', response);
-				deferred.resolve(response);				
+				console.log('Response from createRecipe ->> ', response);
+				return response.data;				
 			},
 			function(errResponse){
 				console.log("ERROR");
-				deferred.reject(errResponse);
 			});
 			
 			return deferred.promise;
