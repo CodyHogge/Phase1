@@ -24,9 +24,6 @@ angular
 				vm.list2 = data;				
 				console.log('Recipes returned to controller.');
 				return vm.list;
-			},
-			function(error){
-				console.log('Recipes list retrieval fail.');
 			});
 		};
 		

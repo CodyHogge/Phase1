@@ -16,13 +16,13 @@ public class HibernateRecipeRepositoryImpl implements RecipeRepository {
 	
 	private List<Recipe> initStaticList() {
 		List<Recipe> recipes = new ArrayList<Recipe>();
-		Recipe rec1 = new Recipe("Chicken Parm", "Delicious breaded chicken dish");
+		Recipe rec1 = new Recipe("Chicken Parmesan", "Delicious breaded chicken dish");
 		rec1.setId(new Long(1));
-		Recipe rec2 = new Recipe("Steak Tacos", "Burrito de carne asada?");
+		Recipe rec2 = new Recipe("Steak Tacos", "Carne Asada wrapped in flour tortillas");
 		rec2.setId(new Long(2));
-		Recipe rec3 = new Recipe("Tofu Burgers", "What even is tofu");
+		Recipe rec3 = new Recipe("Tofu Burgers", "Vegetarian friendly burger");
 		rec3.setId(new Long(3));
-		Recipe rec4 = new Recipe("Chicken Sammies", "Not as good as Noble Beasts tho... RIP");
+		Recipe rec4 = new Recipe("Chicken Sammies", "Delicacies that sparked a war");
 		rec4.setId(new Long(4));
 		
 		recipes.add(rec1);

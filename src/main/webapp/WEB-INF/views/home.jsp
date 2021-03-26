@@ -111,8 +111,6 @@
 			
 			<h1> JavaScript Recipe List </h1>
 			
-			<h4><span ng-bind="ctrl.test"></span></h4>
-			
 			<ul>
 				<li ng-repeat="ex in ctrl.list2">
 					<strong><span ng-bind="ex.name"></span></strong><br>
