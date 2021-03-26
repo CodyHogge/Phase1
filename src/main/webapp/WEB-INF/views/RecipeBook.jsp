@@ -109,14 +109,14 @@
 
 					<p>----------------------------------------------------------------------------</p>
 
-					<p>Total number of recipes: {{ list2.length }}</p>
+					<p>Total number of recipes: <span ng-bind="ctrl.list2.length"></span></p>
 
 					<p>----------------------------------------------------------------------------</p>
 
 					<div class="container">
 
 						<div class="row row-cols-3 row-cols-md-3 g-4">
-							<div class="col" ng-repeat="recipe in list2">
+							<div class="col" ng-repeat="recipe in ctrl.list2">
 								<div class="card">
 									<!-- 								<img src="..." class="card-img-top" alt="..."> -->
 									<div class="card-body">
@@ -145,7 +145,7 @@
 
 					<!-- ASYNC JS ADD FORM -->
 					<form name="form.createRecipeForm"
-						ng-submit="createRecipe(form.createRecipeForm)">
+						ng-submit="ctrl.createRecipe(form.createRecipeForm)">
 						<div class="form-group">
 							<label for="name">Name: </label> <input type="text"
 								class="form-control" id="name" placeholder="Enter Name"

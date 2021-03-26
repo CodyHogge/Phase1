@@ -1,7 +1,7 @@
 (function() { 
 
 angular.module('myHome').
-	factory('FreshService', FreshService);
+	service('FreshService', FreshService);
 	FreshService.$inject = ['$http', '$q'];
 	var thisFreshService = {};
 	
@@ -11,12 +11,12 @@ angular.module('myHome').
 		var deferred = $q.defer();
 		
 		
-		var factory = {
+		var service = {
 			getList: getList,
 			createRecipe: createRecipe
 		};
 		
-		return factory;
+		return service;
 		
 		function getList(){
 			$http.get(urlBase+'AllRecList').then(

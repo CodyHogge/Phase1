@@ -1,54 +1,49 @@
 //put IIFE for john papa
-(function() { 
+(function() {
 'use strict';
 
 angular
 	.module('myHome')
 	.controller('FreshControl', FreshControl);
-	FreshControl.$inject = ['FreshService']
+	FreshControl.$inject = ['FreshService'];
 	
 	function FreshControl(FreshService){
+		var vm = this;
+		vm.test = 'Test string from this.test';
 		
-		this.test = 'Test string from this.test';
-		
-		this.form = {
+		vm.form = {
 			createRecipeForm: {}
 		};
+					
+		vm.list2 = [];
 		
-		this.list = [
-				{
-					name: 'test1',
-					description: 'test1 desc'
-				},
-				{
-					name: 'test2',
-					description: 'test2 desc'
-				},
-				{
-					name: 'test3',
-					description: 'test3 desc'
-				}
-			];
-			
-		this.list2 = [];
-		
-		this.listComp = function listComp(){
-			console.log("listComp called in FreshControl");
-			FreshService.getList().then(function(data){
-				this.list2 = data;
-				return this.list2;
+		vm.cGetList = function cGetList(){
+			console.log("cGetList() called in FreshControl");
+			FreshService.getList()
+			.then(function(data){
+				vm.list2 = data;				
+				console.log('Recipes returned to controller.');
+				return vm.list;
+			},
+			function(error){
+				console.log('Recipes list retrieval fail.');
 			});
 		};
 		
-		this.createRecipe = function createRecipe(form){
+		vm.createRecipe = function createRecipe(form){
 			console.log("createRecipe() in FreshControl");
 			FreshService.createRecipe(form);
-			this.list2 = this.listComp();
-			return this.list2;
+			vm.list2 = vm.cGetList();
+			return vm.list2;
 		};
 		
-		this.list2 = this.listComp();
+		vm.cGetList();
 	}
+	
+})(); //Close the John Papa IIFE
+
+
+
 
 /* THIS WAS THE ORIGINAL CODE THAT I USED TO GET THE PROJECT RUNNING, BEFORE CONVERTING FORMAT TO JOHN PAPA ->
 angular.module('myHome').controller('FreshControl', ['$scope','FreshService', function($scope, FreshService) {
@@ -110,4 +105,4 @@ angular.module('myHome').controller('FreshControl', ['$scope','FreshService', fu
 }]);*/
 	
 		
-})();	//Close the IIFE
+

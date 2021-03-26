@@ -111,8 +111,10 @@
 			
 			<h1> JavaScript Recipe List </h1>
 			
+			<h4><span ng-bind="ctrl.test"></span></h4>
+			
 			<ul>
-				<li ng-repeat="ex in list2">
+				<li ng-repeat="ex in ctrl.list2">
 					<strong><span ng-bind="ex.name"></span></strong><br>
 					  -> Description: <span ng-bind="ex.description"></span>
 					  <br>
@@ -120,7 +122,7 @@
 				</li>
 			</ul>
 			<br>
-			<p>Total number of recipes: {{ list2.length }}</p>
+			<p>Total number of recipes: <span ng-bind="ctrl.list2.length"></span></p>
 			
 			<p> JS addition test 1 + 2 = {{ 1 +  2 }}</p>
 			
