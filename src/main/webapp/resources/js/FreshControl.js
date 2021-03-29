@@ -16,37 +16,29 @@ angular
 			createRecipeForm: {}
 		};
 					
-		vm.list2 = [];
+		vm.list2 = [];		
 		
 		vm.cGetList = function cGetList(){
 			console.log("cGetList() called in FreshControl");
 			FreshService.getList()
-			.then(function(data){
-				vm.list2 = data;				
+			.then(function(response){
+				vm.list2 = response.data;	
+				console.log('data -> ',response.data);			
 				console.log('Recipes returned to controller.');
-				return vm.list;
 			});
 		};
 		
 		vm.createRecipe = function createRecipe(form){
 			console.log("createRecipe() in FreshControl");
 			FreshService.createRecipe(form)
-			.then(function(data){
-				
-				//This function is completing before the Response in FreshService can set the
-				//new recipe is added.
-				
-				console.log('createRec -> FreshControl -> data :'+data);
-				
-				vm.list2 = data;			
-				
-				console.log('Recipes data returned from createRecipe Service ***');
+			.then(vm.cGetList,
+			function(response){
+				console.log('^^response : ',response);
 			});
-			return vm.list2;
 		};
 		
-		vm.cGetList();
 		
+		vm.cGetList();
 		
 	}
 	

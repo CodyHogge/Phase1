@@ -19,11 +19,13 @@ angular.module('myHome').
 		return service;
 		
 		function getList(){
-			$http.get(urlBase+'AllRecList').then(
+			return $http.get(urlBase+'AllRecList');		
+		}
+		
+		/*$http.get(urlBase+'AllRecList').then(
 				function(response) {
 					deferred.resolve(response.data);
 					console.log('FreshService getting list' , response.data);
-					return response.data;
 // code review suggest, working with http mod->	return response.data;
 				},
 				function(errResponse) {
@@ -32,11 +34,17 @@ angular.module('myHome').
 				}
 			);
 			console.log(deferred.promise);
-			return deferred.promise;
-		}
+			return deferred.promise;*/
+		
 		
 		function createRecipe(createObj){
-			console.log('createRecipe in the Fresh Service', createObj);
+			return $http.post(urlBase+'createRecipe',createObj);		
+			
+			}
+			
+			
+			
+			/*console.log('createRecipe in the Fresh Service', createObj);
 			$http({
 				method : "POST",
 				url : urlBase+"createRecipe",
@@ -45,15 +53,15 @@ angular.module('myHome').
 					'Content-Type' : 'application/json'
 				}
 			}).then(function(response) {
-				console.log('Response from createRecipe ->> ', response);
-				return response.data;				
+				console.log('Response from createRecipe -> FreshService -> ', response);
+			
 			},
 			function(errResponse){
 				console.log("ERROR");
 			});
 			
-			return deferred.promise;
-		}		
+			return deferred.promise;*/
+				
 		
 	}
 	

@@ -30,6 +30,7 @@ import com.test2.service.RecipeService;
 public class MainController {
 	
 	@Autowired RecipeRepository recipeRepository;
+	//Need to autowire RecServce
 	
 	//USED TO TEST FreshControl.js
 	@RequestMapping("/fresh")
