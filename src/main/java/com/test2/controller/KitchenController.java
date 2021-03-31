@@ -26,13 +26,19 @@ import com.test2.repository.RecipeRepository;
 
 @RestController
 @EnableAsync
-public class RecipeController {
+@RequestMapping("KitchenController")
+public class KitchenController {
+	
+	/* REST Controller used primarily for CRUD functions, returning JSON data 
+	 */
+	
+	
 	
 	@Autowired
 	RecipeRepository recipeRepository;
 	
 	//GET METHOD FOR FreshService.js LIST	
-	@RequestMapping(value = "/RecipeController/AllRecList", method = RequestMethod.GET)
+	@RequestMapping(value = "/AllRecList", method = RequestMethod.GET)
 	public ResponseEntity<List<Recipe>> AllRecList() {
 		List<Recipe> recipes = recipeRepository.findAll();
 		
@@ -41,7 +47,7 @@ public class RecipeController {
 	}
 	
 	//POST METHOD FOR FreshService.js ADD
-	@RequestMapping(value = "/RecipeController/createRecipe", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+	@RequestMapping(value = "/createRecipe", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
 	public ResponseEntity<List<Recipe>> createRecipe(@RequestBody Recipe recipe) {
 		System.out.println("^^RecipeController hit - createRecipe^^"); 
 

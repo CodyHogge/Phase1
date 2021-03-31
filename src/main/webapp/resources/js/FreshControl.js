@@ -11,12 +11,15 @@ angular
 		var vm = this;
 		vm.test = 'Test string from this.test';
 		
-		vm.form = {
-			
-			createRecipeForm: {}
-		};
+		vm.form = {};
 					
-		vm.list2 = [];		
+		vm.list2 = [];
+	
+		vm.formReset = function formReset(){
+			vm.form.name = null;
+			vm.form.descreption = null;
+			vm.form.cookTime = null;
+		}
 		
 		vm.cGetList = function cGetList(){
 			console.log("cGetList() called in FreshControl");
@@ -34,11 +37,13 @@ angular
 			.then(vm.cGetList,
 			function(response){
 				console.log('^^response : ',response);
-			});
+			},
+			vm.formReset);
 		};
 		
 		
 		vm.cGetList();
+		
 		
 	}
 	

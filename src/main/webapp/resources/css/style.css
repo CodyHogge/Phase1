@@ -6,3 +6,15 @@
 	background: black;
 }
 
+.custTabRow {
+	border: medium;
+	border-color: black;
+	padding: 2px;
+}
+
+.custTabCell {
+	border:thin;
+	border-color: black;
+	padding: 4px;
+	margin: 4px
+}

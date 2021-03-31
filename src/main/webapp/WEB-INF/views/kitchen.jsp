@@ -107,8 +107,27 @@
 
 				<p>----------------------------------------------------------------------------</p>
 
-				<br>
-				<p>Total number of recipes: {{ list2.length }}</p>
+				<table class="mealPlan">
+					<thead>
+						<tr class="custTabRow">
+							<td class="custTabCell"><strong>Sunday</strong></td>
+							<td><strong>Monday</strong></td>
+							<td><strong>Tuesday</strong></td>
+							<td><strong>Wednesday</strong></td>
+							<td><strong>Thursday</strong></td>
+							<td><strong>Friday</strong></td>
+							<td><strong>Saturday</strong></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="custTabRow">
+							<div ng-repeat="meal in ctrl.list2">
+								<td><div ng-bind="meal.name"></div></td>
+							</div>
+						</tr>
+					</tbody>
+				
+				</table>
 
 				<p>----------------------------------------------------------------------------</p>
 				<div>

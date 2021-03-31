@@ -144,20 +144,28 @@
 					<p>----------------------------------------------------------------------------</p>
 
 					<!-- ASYNC JS ADD FORM -->
-					<form name="form.createRecipeForm"
-						ng-submit="ctrl.createRecipe(form.createRecipeForm)">
+					<form name="form"
+						ng-submit="ctrl.createRecipe(form)">
 						<div class="form-group">
 							<label for="name">Name: </label> <input type="text"
 								class="form-control" id="name" placeholder="Enter Name"
-								ng-model="form.createRecipeForm.name" />
+								ng-model="form.name"
+								required="required" />
 						</div>
 						<div class="form-group">
 							<label for="description">Description: </label> <input type="text"
 								class="form-control" id="description"
 								placeholder="Enter description"
-								ng-model="form.createRecipeForm.description" />
+								ng-model="form.description"
+								required="required" />
 						</div>
-						<input type="submit" class="btn btn-default" value="Submit" ng-click="cGetList()"/>
+						<div class="form-group">
+							<label for="cookTime">Cook Time: </label> <input type="text"
+								class="form-control" id="cookTime"
+								placeholder="Enter Cook Time"
+								ng-model="form.cookTime" />
+						</div>
+						<input type="submit" class="btn btn-default" value="Submit" ng-click="ctrl.formReset()"/>
 					</form>
 
 
